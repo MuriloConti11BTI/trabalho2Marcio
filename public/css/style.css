@@ -1,0 +1,458 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-dark-blue: #0f1b2e;
+  --color-blue: #1e3a5f;
+  --color-light-blue: #2d5a8c;
+  --color-lighter-blue: #3d7ab8;
+  --color-accent-blue: #5ba3d0;
+  --color-white: #ffffff;
+  --color-text-light: #e0e0e0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--color-dark-blue) 0%, var(--color-blue) 100%);
+  color: var(--color-text-light);
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-dark-blue);
+  padding: 1rem 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand h1 {
+  font-size: 1.8rem;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.navbar-brand p {
+  font-size: 0.75rem;
+  color: var(--color-accent-blue);
+  margin: 0;
+  font-weight: 300;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--color-accent-blue);
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 2rem 2rem 2rem;
+  min-height: 100vh;
+}
+
+/* CARDS */
+.card {
+  background: rgba(45, 90, 140, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-white);
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+}
+
+/* CADASTRO */
+.cadastro-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-input,
+.form-textarea {
+  padding: 0.9rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-white);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 0 15px rgba(91, 163, 208, 0.3);
+}
+
+.form-input.large {
+  width: 100%;
+}
+
+.form-input.small {
+  width: 100%;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-lighter-blue) 0%, var(--color-accent-blue) 100%);
+  color: var(--color-white);
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(91, 163, 208, 0.3);
+  margin-top: 1rem;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(91, 163, 208, 0.4);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+/* MENSAGENS */
+.mensagem {
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.mensagem.sucesso {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.mensagem.erro {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+/* PRODUTOS PAGE */
+.header-produtos {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header-produtos h2 {
+  font-size: 2.2rem;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.header-produtos p {
+  font-size: 1rem;
+  color: var(--color-text-light);
+}
+
+.produtos_Juka-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.produto_Juka-card {
+  background: rgba(45, 90, 140, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.produto_Juka-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(45, 90, 140, 0.2);
+}
+
+.produto_Juka-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.produto_Juka-nome {
+  font-size: 1.3rem;
+  color: var(--color-white);
+  font-weight: 600;
+  flex: 1;
+  word-break: break-word;
+}
+
+.produto_Juka-preco {
+  color: var(--color-accent-blue);
+  font-size: 1.3rem;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+.produto_Juka-categoria {
+  display: inline-block;
+  background: rgba(91, 163, 208, 0.3);
+  color: var(--color-accent-blue);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.produto_Juka-descricao {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-break: break-word;
+  flex-grow: 1;
+}
+
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-light);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* FEATURE CARDS GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.feature-card {
+  background: rgba(45, 90, 140, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(45, 90, 140, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-lighter-blue) 0%, var(--color-accent-blue) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(91, 163, 208, 0.3);
+}
+
+.icon-symbol {
+  font-size: 2.5rem;
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.card-description {
+  color: var(--color-text-light);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-link {
+  color: var(--color-accent-blue);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .card-link {
+  color: var(--color-white);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    gap: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 8rem 1rem 1rem 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .produtos_Juka-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .header-produtos h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 2rem;
+  }
+
+  .card-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .icon-symbol {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Produto - ProductFlow</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <h1>ProductFlow</h1>
+        <p>Gerenciamento Inteligente</p>
+      </div>
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cadastrar.html">Cadastrar</a></li>
+        <li><a href="produtos_Juka.html">Produtos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="card cadastro-card">
+      <h2 class="card-title">Novo Produto</h2>
+      <p class="card-subtitle">Preencha as informações para adicionar um produto ao catálogo.</p>
+      
+      <form id="formProduto" class="form-produto">
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="nome" 
+            name="nome" 
+            placeholder="Ex: Smartphone XYZ" 
+            class="form-input large"
+            required
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <input 
+              type="number" 
+              id="preco" 
+              name="preco" 
+              placeholder="0.00" 
+              step="0.01"
+              min="0"
+              class="form-input small"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <input 
+              type="text" 
+              id="categoria" 
+              name="categoria" 
+              placeholder="Ex: Eletrônicos" 
+              class="form-input small"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <textarea 
+            id="descricao" 
+            name="descricao" 
+            placeholder="Descreva os detalhes do produto..." 
+            class="form-textarea"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Cadastrar Produto</button>
+      </form>
+
+      <div id="mensagem" class="mensagem" style="display: none;"></div>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
