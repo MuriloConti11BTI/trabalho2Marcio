@@ -44,4 +44,39 @@ router.post('/', async (req, res) => {
   }
 });
 
+// DELETE /produtos_Juka/:id - Deleta um produto_Juka
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Validação do ID
+    if (!id || isNaN(id)) {
+      return res.status(400).json({ error: 'ID inválido' });
+    }
+
+    const connection = await pool.getConnection();
+    
+    // Verificar se o produto existe
+    const [produto] = await connection.query('SELECT id FROM produtos_Juka WHERE id = ?', [id]);
+    
+    if (produto.length === 0) {
+      connection.release();
+      return res.status(404).json({ error: 'Produto não encontrado' });
+    }
+
+    // Deletar o produto
+    const [result] = await connection.query('DELETE FROM produtos_Juka WHERE id = ?', [id]);
+    connection.release();
+
+    if (result.affectedRows > 0) {
+      res.json({ message: 'Produto deletado com sucesso' });
+    } else {
+      res.status(500).json({ error: 'Erro ao deletar produto' });
+    }
+  } catch (error) {
+    console.error('Erro ao deletar produto:', error);
+    res.status(500).json({ error: 'Erro ao deletar produto' });
+  }
+});
+
 module.exports = router;

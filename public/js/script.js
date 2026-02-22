@@ -1,5 +1,5 @@
 // API BASE URL
-const API_URL = 'http://localhost:3001';
+const API_URL = 'http://localhost:3000';
 
 // ==================== CADASTRO DE PRODUTOS_JUKA ====================
 const formProduto = document.getElementById('formProduto');
@@ -82,6 +82,7 @@ async function carregarProdutos_Juka() {
     produtos_Juka.forEach(produto => {
       const card = document.createElement('div');
       card.className = 'produto_Juka-card';
+      card.id = `produto-${produto.id}`;
 
       const precoFormatado = parseFloat(produto.preco).toLocaleString('pt-BR', {
         style: 'currency',
@@ -95,9 +96,14 @@ async function carregarProdutos_Juka() {
         </div>
         <div class="produto_Juka-categoria">${produto.categoria}</div>
         <div class="produto_Juka-descricao">${produto.descricao}</div>
+        <button class="btn-apagar" data-id="${produto.id}">Apagar</button>
       `;
 
       produtosContainer.appendChild(card);
+
+      // Adicionar evento de clique no botão Apagar
+      const btnApagar = card.querySelector('.btn-apagar');
+      btnApagar.addEventListener('click', () => deletarProduto(produto.id, card));
     });
 
   } catch (error) {
@@ -120,5 +126,36 @@ function mostrarMensagem(texto, tipo) {
     setTimeout(() => {
       msgElement.style.display = 'none';
     }, 4000);
+  }
+}
+
+// ==================== DELETAR PRODUTOS_JUKA ====================
+async function deletarProduto(id, cardElement) {
+  try {
+    const response = await fetch(`${API_URL}/produtos_Juka/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao deletar produto');
+    }
+
+    // Exibir mensagem de sucesso
+    alert('Produto apagado com sucesso!');
+
+    // Remover o card do DOM com animação suave
+    cardElement.style.transition = 'opacity 0.3s ease';
+    cardElement.style.opacity = '0';
+    
+    setTimeout(() => {
+      cardElement.remove();
+    }, 300);
+
+  } catch (error) {
+    console.error('Erro ao deletar produto:', error);
+    alert('Erro ao deletar produto. Tente novamente.');
   }
 }
